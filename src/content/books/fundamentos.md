@@ -1,9 +1,9 @@
 ---
-title: Fundamentos de programacion
+title: Fundamentos de Programación
 author: Luis Joyanes Aguilar
 img: fundamentos.png
 readtime: 507
-description: Algoritmos y estructura de datos segunda edicion
+description: Algoritmos y estructura de datos, segunda edición.
 buy:
     spain: https://www.amazon.com.mx/Luna-Plut%C3%B3n-Dross/dp/6070731743
     usa: https://www.amazon.com.mx/Luna-Plut%C3%B3n-Dross/dp/6070731743

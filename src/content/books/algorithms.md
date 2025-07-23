@@ -1,9 +1,9 @@
 ---
-title: Introduction to algorithms
-author: thomas h. cormen
+title: Introduction to Algorithms
+author: Thomas H. Cormen
 img: algorithms.png
 readtime: 224
-description: Introduccion a algoritmos tercera edicion
+description: Introducción a algoritmos, tercera edición.
 buy:
     spain: https://www.amazon.com.mx/Luna-Plut%C3%B3n-Dross/dp/6070731743
     usa: https://www.amazon.com.mx/Luna-Plut%C3%B3n-Dross/dp/6070731743

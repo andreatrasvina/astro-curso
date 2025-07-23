@@ -3,7 +3,7 @@ title: Programming Perl
 author: Larry Wall
 img: perl.png
 readtime: 429
-description: Hay mas de una manera de hacerlo tercera edicion revisada y actualizada
+description: Hay más de una manera de hacerlo, tercera edición revisada y actualizada.
 buy:
     spain: https://www.amazon.com.mx/Luna-Plut%C3%B3n-Dross/dp/6070731743
     usa: https://www.amazon.com.mx/Luna-Plut%C3%B3n-Dross/dp/6070731743

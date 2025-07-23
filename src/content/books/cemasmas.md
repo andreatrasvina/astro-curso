@@ -1,9 +1,9 @@
 ---
-title: El gran libro de programacion en c++
-author: Alfons Gonzalez Perez
+title: El Gran Libro de Programación en C++
+author: Alfons González Pérez
 img: cemasmas.png
 readtime: 300
-description: Aprende a programar con c++
+description: Aprende a programar con C++.
 buy:
     spain: https://www.amazon.com.mx/Luna-Plut%C3%B3n-Dross/dp/6070731743
     usa: https://www.amazon.com.mx/Luna-Plut%C3%B3n-Dross/dp/6070731743
