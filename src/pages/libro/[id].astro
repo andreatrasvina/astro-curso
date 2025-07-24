@@ -1,0 +1,28 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const books = await getCollection('books');
+
+  return books.map((book) => ({
+    params: { id: book.id.replace(/\.md$/, "") },
+    props: { book },
+  }));
+}
+
+const { book } = Astro.props;
+const { data } = book;
+const { title, author, img, readtime, description, buy } = data;
+
+//renderizar el contenido del md
+const { Content } = await render(book);
+---
+
+<Layout title={`${title} - Dev Books`}>
+    <h1>{title}</h1>
+
+    <Content />
+    
+</Layout>
+
