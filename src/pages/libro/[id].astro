@@ -20,9 +20,48 @@ const { Content } = await render(book);
 ---
 
 <Layout title={`${title} - Dev Books`}>
-    <h1>{title}</h1>
 
-    <Content />
-    
+    <div class="grid">
+        <aside>
+            <img class="portada" src={`/${img}`} alt={title} />
+        </aside>
+
+        <main>
+            <h1 class="titulo">{title}</h1>
+            <div class="info">
+
+                <Content />
+            </div>
+        </main>
+
+    </div>
+
+
 </Layout>
 
+<style>
+    .grid{
+        display: grid;
+        grid-template-columns: 25% 75%;
+        gap: 30px;
+    }
+
+    .portada{
+        border-radius: 10px;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .titulo{
+        font-weight: bolder;
+		font-size: xx-large;
+        margin-bottom: 10px;
+    }
+
+    .info{
+        display: block;
+		justify-content: center;
+		justify-items: left;
+    }
+
+</style>
