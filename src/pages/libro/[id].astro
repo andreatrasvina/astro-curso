@@ -30,6 +30,9 @@ const { Content } = await render(book);
         <aside>
             <a href="/" class="regresar"> ← Volver atrás</a>
             <img transition:name={`img-${slug}`} class="portada" src={`/${img}`} alt={title} />
+            
+            <span class="score" id="score"></span>
+
             {SHOW_BUY_BUTTON && (
                 <a
                     href={buy.spain}
@@ -56,6 +59,23 @@ const { Content } = await render(book);
 
 
 </Layout>
+
+<script>
+    import { SCORE_API_ENDPOINT } from "astro:env/client";
+
+    const scoreElement = document.querySelector('#score');
+
+    fetch(SCORE_API_ENDPOINT)
+        .then(res => res.text())
+        .then(scoreValue => {
+            if(scoreElement){
+                scoreElement.innerHTML = `⭐ Puntuación: ${scoreValue.trim()}/5`
+            }
+            
+        })
+</script>
+
+
 
 <style>
     .grid{
@@ -93,6 +113,14 @@ const { Content } = await render(book);
         color: white;
         /* background-color: gray;
         border-radius: 8px; */
+    }
+
+    .score{
+        font-size: small;
+        text-align: center;
+        display: block;
+        width: 100%;
+        padding-top: 20px;
     }
 
     .amazon-button {
