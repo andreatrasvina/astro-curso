@@ -2,6 +2,9 @@
 import Layout from "../../layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
 
+import { SHOW_BUY_BUTTON } from "astro:env/server";
+import AmazonLogo from "../../components/AmazonLogo.astro";
+
 export async function getStaticPaths() {
   const books = await getCollection('books');
 
@@ -25,8 +28,21 @@ const { Content } = await render(book);
 
     <div class="grid">
         <aside>
-            <a href="/" class=hover:underline"> ← Volver atrás</a>
+            <a href="/" class="regresar"> ← Volver atrás</a>
             <img transition:name={`img-${slug}`} class="portada" src={`/${img}`} alt={title} />
+            {SHOW_BUY_BUTTON && (
+                <a
+                    href={buy.spain}
+                    title="Comprar libro"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="amazon-button"
+                >
+                    Comprar en Amazon España
+                    <AmazonLogo />
+                </a>
+            )}
+            
         </aside>
 
         <main>
@@ -65,5 +81,48 @@ const { Content } = await render(book);
 		justify-content: center;
 		justify-items: left;
     }
+
+    .regresar{
+        user-select: all;
+        color: gray;
+        padding: 10px;
+    }
+
+    .regresar:hover{
+        text-decoration: underline;
+        color: white;
+        /* background-color: gray;
+        border-radius: 8px; */
+    }
+
+    .amazon-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+
+        background-color: #facc15;
+        color: #000;
+        font-weight: bold;
+
+        padding: 12px 16px;
+        border-radius: 8px;
+
+        margin-top: 20px;
+
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .amazon-button:hover {
+        background-color: #fbbf24;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .amazon-button:active {
+        background-color: #cc7a00;
+        transform: translateY(0);
+    }
+
 
 </style>
