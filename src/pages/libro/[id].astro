@@ -12,8 +12,10 @@ export async function getStaticPaths() {
 }
 
 const { book } = Astro.props;
-const { data } = book;
+const { id, data } = book;
 const { title, author, img, readtime, description, buy } = data;
+
+const slug = id.replace(/\.md$/, "");
 
 //renderizar el contenido del md
 const { Content } = await render(book);
@@ -23,12 +25,13 @@ const { Content } = await render(book);
 
     <div class="grid">
         <aside>
-            <img class="portada" src={`/${img}`} alt={title} />
+            <a href="/" class=hover:underline"> ← Volver atrás</a>
+            <img transition:name={`img-${slug}`} class="portada" src={`/${img}`} alt={title} />
         </aside>
 
         <main>
-            <h1 class="titulo">{title}</h1>
-            <div class="prose">
+            <h1 transition:name={`title-${slug}`} class="titulo">{title}</h1>
+            <div class="prose prose-invert ">
                 <Content />
             </div>
         </main>
