@@ -4,6 +4,7 @@ import { getCollection, render } from "astro:content";
 
 import { SHOW_BUY_BUTTON } from "astro:env/server";
 import AmazonLogo from "../../components/AmazonLogo.astro";
+import BookScore from "../../components/BookScore.astro";
 
 export async function getStaticPaths() {
   const books = await getCollection('books');
@@ -22,6 +23,8 @@ const slug = id.replace(/\.md$/, "");
 
 //renderizar el contenido del md
 const { Content } = await render(book);
+
+export const prerender = true;
 ---
 
 <Layout title={`${title} - Dev Books`}>
@@ -30,8 +33,10 @@ const { Content } = await render(book);
         <aside>
             <a href="/" class="regresar"> ← Volver atrás</a>
             <img transition:name={`img-${slug}`} class="portada" src={`/${img}`} alt={title} />
-            
-            <span class="score" id="score"></span>
+
+            <BookScore server:defer id={slug}> 
+                <span slot="fallback" class="score">Cargando Puntuación...</span>
+            </BookScore>
 
             {SHOW_BUY_BUTTON && (
                 <a
@@ -59,23 +64,6 @@ const { Content } = await render(book);
 
 
 </Layout>
-
-<script>
-    import { SCORE_API_ENDPOINT } from "astro:env/client";
-
-    const scoreElement = document.querySelector('#score');
-
-    fetch(SCORE_API_ENDPOINT)
-        .then(res => res.text())
-        .then(scoreValue => {
-            if(scoreElement){
-                scoreElement.innerHTML = `⭐ Puntuación: ${scoreValue.trim()}/5`
-            }
-            
-        })
-</script>
-
-
 
 <style>
     .grid{
